@@ -2,27 +2,43 @@ package com.example.diceroller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import com.example.diceroller.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val rollButton: Button = findViewById(R.id.button)
-        rollButton.setOnClickListener { rollDice() }
+        binding.button.setOnClickListener {
+            rollDice()
+        }
 
         // Do a dice roll when the app starts
         for (i in 0..4){
             rollDice()
+            hideFirstRoll()
         }
+    }
+
+    private fun hideFirstRoll() {
+        binding.resultsTextView.visibility = View.INVISIBLE
+        binding.resultsNumber.visibility = View.INVISIBLE
     }
 
     /**
      * Roll the dice and update the screen with the result
      */
     private fun rollDice() {
+        val redDicesList = mutableListOf<Int>()
+        val blueDicesList = mutableListOf<Int>()
+
         val dice = Dice(6)
         val dice2 = Dice(6)
         val dice3 = Dice(6)
@@ -35,24 +51,27 @@ class MainActivity : AppCompatActivity() {
         val diceRoll4 = dice4.roll()
         val diceRoll5 = dice5.roll()
 
-        val diceImage: ImageView = findViewById(R.id.redDice1)
-        val diceImage2: ImageView = findViewById(R.id.redDice2)
-        val diceImage3: ImageView = findViewById(R.id.redDice3)
-        val diceImage4: ImageView = findViewById(R.id.blueDice1)
-        val diceImage5: ImageView = findViewById(R.id.blueDice2)
+        redDicesList.add(diceRoll)
+        redDicesList.add(diceRoll2)
+        redDicesList.add(diceRoll3)
+        blueDicesList.add(diceRoll4)
+        blueDicesList.add(diceRoll5)
 
         // Changes the image according to the number obtained
-        diceImage.setImageResource(drawRedRes(diceRoll))
-        diceImage2.setImageResource(drawRedRes(diceRoll2))
-        diceImage3.setImageResource(drawRedRes(diceRoll3))
-        diceImage4.setImageResource(drawBlueRes(diceRoll4))
-        diceImage5.setImageResource(drawBlueRes(diceRoll5))
+        with(binding){
+            redDice1.setImageResource(drawRedRes(diceRoll))
+            redDice2.setImageResource(drawRedRes(diceRoll2))
+            redDice3.setImageResource(drawRedRes(diceRoll3))
+            blueDice1.setImageResource(drawBlueRes(diceRoll4))
+            blueDice2.setImageResource(drawBlueRes(diceRoll5))
 
-        diceImage.contentDescription = diceRoll.toString()
-        diceImage2.contentDescription = diceRoll2.toString()
-        diceImage3.contentDescription = diceRoll3.toString()
-        diceImage4.contentDescription = diceRoll4.toString()
-        diceImage5.contentDescription = diceRoll5.toString()
+            redDice1.contentDescription = diceRoll.toString()
+            redDice2.contentDescription = diceRoll2.toString()
+            redDice3.contentDescription = diceRoll3.toString()
+            blueDice1.contentDescription = diceRoll4.toString()
+            blueDice2.contentDescription = diceRoll5.toString()
+        }
+        drawResults(redDicesList, blueDicesList)
     }
 
     private fun drawRedRes(roll: Int): Int {
@@ -77,6 +96,33 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.blue_6
         }
         return drawableResource
+    }
+
+    private fun drawResults(redDicesList: List<Int>, blueDicesList: List<Int>) {
+        var redCount = 0
+        var blueCount = 0
+        val sortedRedList = redDicesList.sortedDescending()
+        val sortedBlueList = blueDicesList.sortedDescending()
+
+        val largestRed1 = sortedRedList.getOrNull(0) ?: Int.MIN_VALUE
+        val largestRed2 = sortedRedList.getOrNull(1) ?: Int.MIN_VALUE
+        val largestBlue1 = sortedBlueList.getOrNull(0) ?: Int.MIN_VALUE
+        val largestBlue2 = sortedBlueList.getOrNull(1) ?: Int.MIN_VALUE
+
+        if (largestBlue1 >= largestRed1){
+            redCount--
+        } else blueCount--
+
+        if (largestBlue2 >= largestRed2){
+            redCount--
+        } else blueCount--
+
+        with (binding) {
+            resultsTextView.visibility = View.VISIBLE
+            resultsNumber.visibility = View.VISIBLE
+            defenderResult.text = blueCount.toString()
+            attackerResult.text = redCount.toString()
+        }
     }
 }
 

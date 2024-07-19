@@ -2,4 +2,6 @@
     <string name="app_name">Dice Roller</string>
     <string name="roll">ROLL</string>
     <string name="results">Results</string>
+    <string name="attacker_result">Attacker: %s</string>
+    <string name="defender_result">%s :Defender</string>
 </resources>

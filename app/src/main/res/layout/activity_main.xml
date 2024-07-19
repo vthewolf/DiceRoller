@@ -4,75 +4,131 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="16dp"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/redDice1"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232"
-        app:srcCompat="@drawable/red_1" />
+    <LinearLayout
+        android:id="@+id/redDiceLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/blueDiceLayout">
 
-    <ImageView
-        android:id="@+id/redDice2"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/redDice3"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toEndOf="@+id/redDice1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232"
-        tools:srcCompat="@drawable/red_2" />
+        <ImageView
+            android:id="@+id/redDice1"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/red_1" />
 
-    <ImageView
-        android:id="@+id/redDice3"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/redDice2"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toStartOf="@+id/redDice3"
+            app:layout_constraintStart_toEndOf="@+id/redDice1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/red_2" />
+
+        <ImageView
+            android:id="@+id/redDice3"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_marginEnd="12dp"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/red_3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/blueDiceLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/resultsTextView">
+
+        <ImageView
+            android:id="@+id/blueDice1"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_weight="1.5"
+            app:layout_constraintBottom_toTopOf="@id/resultsTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:srcCompat="@drawable/blue_4" />
+
+        <ImageView
+            android:id="@+id/blueDice2"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_weight="1.5"
+            app:layout_constraintBottom_toTopOf="@id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:srcCompat="@drawable/blue_5" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/resultsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="@string/results"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@id/resultsNumber" />
+
+    <LinearLayout
+        android:id="@+id/resultsNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232"
-        tools:srcCompat="@drawable/red_3" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <ImageView
-        android:id="@+id/blueDice1"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/redDice1"
-        app:layout_constraintVertical_bias="0.054"
-        tools:srcCompat="@drawable/blue_4" />
+        <TextView
+            android:id="@+id/attackerResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:gravity="center"
+            android:textColor="@color/red"
+            android:textSize="32sp"
+            tools:text="-1" />
 
-    <ImageView
-        android:id="@+id/blueDice2"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.735"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/redDice3"
-        app:layout_constraintVertical_bias="0.054"
-        tools:srcCompat="@drawable/blue_5" />
+        <TextView
+            android:id="@+id/defenderResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:textSize="32sp"
+            tools:text="-2" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/button"
-        android:layout_width="167dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="344dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="36dp"
         android:text="@string/roll"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/redDice2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
