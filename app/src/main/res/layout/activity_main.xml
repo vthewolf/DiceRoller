@@ -7,6 +7,17 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/redDice1"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.232"
+        app:srcCompat="@drawable/red_1" />
+
+    <ImageView
         android:id="@+id/redDice2"
         android:layout_width="120dp"
         android:layout_height="160dp"
@@ -17,6 +28,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.232"
         tools:srcCompat="@drawable/red_2" />
+
+    <ImageView
+        android:id="@+id/redDice3"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.232"
+        tools:srcCompat="@drawable/red_3" />
+
+    <ImageView
+        android:id="@+id/blueDice1"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/redDice1"
+        app:layout_constraintVertical_bias="0.054"
+        tools:srcCompat="@drawable/blue_4" />
 
     <ImageView
         android:id="@+id/blueDice2"
@@ -31,18 +65,6 @@
         app:layout_constraintVertical_bias="0.054"
         tools:srcCompat="@drawable/blue_5" />
 
-    <ImageView
-        android:id="@+id/blueDice1"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/redDice1"
-        app:layout_constraintVertical_bias="0.054"
-        tools:srcCompat="@drawable/blue_4" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="167dp"
@@ -52,27 +74,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/redDice2" />
-
-    <ImageView
-        android:id="@+id/redDice1"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232"
-        app:srcCompat="@drawable/red_1" />
-
-    <ImageView
-        android:id="@+id/redDice3"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232"
-        tools:srcCompat="@drawable/red_3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
