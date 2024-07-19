@@ -3,8 +3,6 @@ package com.example.diceroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
 import com.example.diceroller.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,18 +21,15 @@ class MainActivity : AppCompatActivity() {
         // Do a dice roll when the app starts
         for (i in 0..4){
             rollDice()
-            hideFirstRoll()
+            hideFirstRollText()
         }
     }
 
-    private fun hideFirstRoll() {
+    private fun hideFirstRollText() {
         binding.resultsTextView.visibility = View.INVISIBLE
         binding.resultsNumber.visibility = View.INVISIBLE
     }
 
-    /**
-     * Roll the dice and update the screen with the result
-     */
     private fun rollDice() {
         val redDicesList = mutableListOf<Int>()
         val blueDicesList = mutableListOf<Int>()
