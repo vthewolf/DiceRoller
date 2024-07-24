@@ -96,19 +96,17 @@ class MainActivity : AppCompatActivity() {
     private fun drawResults(redDicesList: List<Int>, blueDicesList: List<Int>) {
         var redCount = 0
         var blueCount = 0
-        val sortedRedList = redDicesList.sortedDescending()
-        val sortedBlueList = blueDicesList.sortedDescending()
 
-        val largestRed1 = sortedRedList.getOrNull(0) ?: Int.MIN_VALUE
-        val largestRed2 = sortedRedList.getOrNull(1) ?: Int.MIN_VALUE
-        val largestBlue1 = sortedBlueList.getOrNull(0) ?: Int.MIN_VALUE
-        val largestBlue2 = sortedBlueList.getOrNull(1) ?: Int.MIN_VALUE
+        val largestRed1 = redDicesList.sortedDescending().getOrNull(0) ?: Int.MIN_VALUE
+        val largestRed2 = redDicesList.sortedDescending().getOrNull(1) ?: Int.MIN_VALUE
+        val largestBlue1 = blueDicesList.sortedDescending().getOrNull(0) ?: Int.MIN_VALUE
+        val largestBlue2 = blueDicesList.sortedDescending().getOrNull(1) ?: Int.MIN_VALUE
 
-        if (largestBlue1 >= largestRed1){
+        if (largestBlue1 >= largestRed1) {
             redCount--
         } else blueCount--
 
-        if (largestBlue2 >= largestRed2){
+        if (largestBlue2 >= largestRed2) {
             redCount--
         } else blueCount--
 
